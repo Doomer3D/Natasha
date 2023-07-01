@@ -1,4 +1,4 @@
-# Natasha#
+# Natasha
 
 Порт библиотеки https://github.com/natasha на C#
 
@@ -7,6 +7,27 @@
 * <a href="https://github.com/natasha/razdel">natasha.razdel</a>
 
 ## Natasha.Razdel
+
+[![stable](https://img.shields.io/nuget/v/Natasha.Razdel.svg?label=stable)](https://www.nuget.org/packages/Natasha.Razdel/)
+
+### Sentenizer
+
+Использование:
+
+```cs
+var text = """
+- "Так в чем же дело?" - "Не ра-ду-ют".
+И т. д. и т. п. В общем, вся газета
+""";
+
+var sentenizer = new TextSentenizer();
+var data = sentenizer.Split(text).ToList();
+
+// [0:22] - "Так в чем же дело?"
+// [23:39] - "Не ра-ду-ют".
+// [41:56] И т. д. и т. п.
+// [57:76] В общем, вся газета
+```
 
 ### Tokenizer
 
@@ -54,7 +75,3 @@ class NumberRule : Rule<TokenSplit>
 
 tokenizer.Rules.Add(new NumberRule());
 ```
-
-### Sentenizer
-
-Скоро будет!
