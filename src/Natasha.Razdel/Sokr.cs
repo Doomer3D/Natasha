@@ -3,14 +3,14 @@
 namespace Natasha.Razdel;
 
 /// <summary>
-/// сокращения
+/// Сокращения
 /// </summary>
 public static partial class Sokr
 {
     /// <summary>
-    /// завершающие сокращения
+    /// Завершающие сокращения
     /// </summary>
-    public static readonly HashSet<string> TAIL_SOKRS = new(ParseSokrs(new string[] {
+    public static readonly HashSet<string> TAIL_SOKRS = [.. ParseSokrs([
         "дес тыс млн млрд",
         "дол долл",
         "коп руб р",
@@ -28,12 +28,12 @@ public static partial class Sokr
         "изд ed",
         "др",
         "al"
-    }));
+    ])];
 
     /// <summary>
-    /// начальные сокращения
+    /// Начальные сокращения
     /// </summary>
-    public static readonly HashSet<string> HEAD_SOKRS = new(ParseSokrs(new string[] {
+    public static readonly HashSet<string> HEAD_SOKRS = [.. ParseSokrs([
         "букв",
         "ст",
         "трад",
@@ -80,27 +80,27 @@ public static partial class Sokr
         "дифф",
         "гос",
         "отм"
-    }));
+    ])];
 
     /// <summary>
-    /// прочие сокращения
+    /// Прочие сокращения
     /// </summary>
-    public static readonly HashSet<string> OTHER_SOKRS = new(ParseSokrs(new string[] {
+    public static readonly HashSet<string> OTHER_SOKRS = [.. ParseSokrs([
         "сокр рис искл прим",
         "яз",
         "устар",
         "шутл"
-    }));
+    ])];
 
     /// <summary>
-    /// все сокращения
+    /// Все сокращения
     /// </summary>
     public static readonly HashSet<string> SOKRS = Combine(TAIL_SOKRS, HEAD_SOKRS, OTHER_SOKRS);
 
     /// <summary>
-    /// завершающие парные сокращения
+    /// Завершающие парные сокращения
     /// </summary>
-    public static readonly HashSet<(string, string)> TAIL_PAIR_SOKRS = new(ParsePairSokrs(new string[] {
+    public static readonly HashSet<(string, string)> TAIL_PAIR_SOKRS = [.. ParsePairSokrs([
         "т п",
         "т д",
         "у е",
@@ -115,12 +115,12 @@ public static partial class Sokr
         "л с",
         "ч т",
         "т д"
-    }));
+    ])];
 
     /// <summary>
-    /// начальные парные сокращения
+    /// Начальные парные сокращения
     /// </summary>
-    public static readonly HashSet<(string, string)> HEAD_PAIR_SOKRS = new(ParsePairSokrs(new string[] {
+    public static readonly HashSet<(string, string)> HEAD_PAIR_SOKRS = [.. ParsePairSokrs([
         "т е",
         "т к",
         "т н",
@@ -131,38 +131,38 @@ public static partial class Sokr
         "к т",
         "т н",
         "л д"
-    }));
+    ])];
 
     /// <summary>
-    /// прочие парные сокращения
+    /// Прочие парные сокращения
     /// </summary>
-    public static readonly HashSet<(string, string)> OTHER_PAIR_SOKRS = new(ParsePairSokrs(new string[] {
+    public static readonly HashSet<(string, string)> OTHER_PAIR_SOKRS = [.. ParsePairSokrs([
         "ед ч",
         "мн ч",
         "повел накл",
         "жен р",
         "муж р"
-    }));
+    ])];
 
     /// <summary>
-    /// все парные сокращения
+    /// Все парные сокращения
     /// </summary>
     public static readonly HashSet<(string, string)> PAIR_SOKRS = Combine(TAIL_PAIR_SOKRS, HEAD_PAIR_SOKRS, OTHER_PAIR_SOKRS);
 
     /// <summary>
-    /// инициалы
+    /// Инициалы
     /// </summary>
-    public static readonly HashSet<string> INITIALS = new()
-    {
+    public static readonly HashSet<string> INITIALS =
+    [
         "дж",
         "ed",
         "вс"
-    };
+    ];
 
     /// <summary>
-    /// распарсить сокращения
+    /// Распарсить сокращения
     /// </summary>
-    /// <param name="lines"> строки </param>
+    /// <param name="lines"> Строки </param>
     /// <returns></returns>
     private static IEnumerable<string> ParseSokrs(IEnumerable<string> lines)
     {
@@ -176,9 +176,9 @@ public static partial class Sokr
     }
 
     /// <summary>
-    /// распарсить парные сокращения
+    /// Распарсить парные сокращения
     /// </summary>
-    /// <param name="lines"> строки </param>
+    /// <param name="lines"> Строки </param>
     /// <returns></returns>
     private static IEnumerable<(string, string)> ParsePairSokrs(IEnumerable<string> lines)
     {
@@ -190,10 +190,10 @@ public static partial class Sokr
     }
 
     /// <summary>
-    /// комбинировать хешсеты
+    /// Комбинировать хешсеты
     /// </summary>
-    /// <typeparam name="T"> тип элемента </typeparam>
-    /// <param name="sets"> список хешсетов </param>
+    /// <typeparam name="T"> Тип элемента </typeparam>
+    /// <param name="sets"> Список хешсетов </param>
     /// <returns></returns>
     private static HashSet<T> Combine<T>(params HashSet<T>[] sets)
     {

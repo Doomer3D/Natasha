@@ -5,17 +5,18 @@ using System.Text.RegularExpressions;
 namespace Natasha.Razdel.Tokenizer;
 
 /// <summary>
-/// разделитель токенов
+/// Разделитель токенов
 /// </summary>
-public class TokenSplitter : Splitter
+/// <param name="window"> Размер окна </param>
+public class TokenSplitter(int window = 3) : Splitter(window)
 {
     /// <summary>
-    /// регулярка для разделения строки
+    /// Регулярка для разделения строки
     /// </summary>
     private static readonly Regex _splitterRegex;
 
     /// <summary>
-    /// статический конструктор
+    /// Статический конструктор
     /// </summary>
     static TokenSplitter()
     {
@@ -29,12 +30,6 @@ public class TokenSplitter : Splitter
 """;
         _splitterRegex = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
     }
-
-    /// <summary>
-    /// конструктор
-    /// </summary>
-    /// <param name="window"> размер окна </param>
-    public TokenSplitter(int window = 3) : base(window) { }
 
     /// <inheritdoc/>
     public override IEnumerable<object> Split(string text)
@@ -61,9 +56,9 @@ public class TokenSplitter : Splitter
     }
 
     /// <summary>
-    /// разделить текст на части
+    /// Разделить текст на части
     /// </summary>
-    /// <param name="text"> текст </param>
+    /// <param name="text"> Текст </param>
     /// <returns></returns>
     private IEnumerable<Atom> GetParts(string text)
     {

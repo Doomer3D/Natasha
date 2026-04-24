@@ -3,21 +3,21 @@
 namespace Natasha.Razdel;
 
 /// <summary>
-/// правило
+/// Правило
 /// </summary>
-/// <typeparam name="T"> тип разделения </typeparam>
+/// <typeparam name="T"> Тип разделения </typeparam>
 public abstract class Rule<T>
     where T : Split
 {
     /// <summary>
-    /// наименование правила
+    /// Наименование правила
     /// </summary>
     public virtual string Name => GetType().Name;
 
     /// <summary>
-    /// проверить правило
+    /// Проверить правило
     /// </summary>
-    /// <param name="split"> разделение </param>
+    /// <param name="split"> Разделение </param>
     /// <returns></returns>
     public abstract RuleAction Check(T split);
 }

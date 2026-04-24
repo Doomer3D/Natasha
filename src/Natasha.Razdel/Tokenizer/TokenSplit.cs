@@ -3,47 +3,47 @@
 namespace Natasha.Razdel.Tokenizer;
 
 /// <summary>
-/// разделение токенов
+/// Разделение токенов
 /// </summary>
 public class TokenSplit : Split
 {
     /// <summary>
-    /// атомы слева
+    /// Атомы слева
     /// </summary>
     public List<Atom> LeftAtoms { get; init; }
 
     /// <summary>
-    /// атомы справа
+    /// Атомы справа
     /// </summary>
     public List<Atom> RightAtoms { get; init; }
 
     /// <summary>
-    /// первый атом слева
+    /// Первый атом слева
     /// </summary>
     public Atom Left1 => _left1.Value;
 
     /// <summary>
-    /// второй атом слева
+    /// Второй атом слева
     /// </summary>
     public Atom? Left2 => _left2.Value;
 
     /// <summary>
-    /// третий атом слева
+    /// Третий атом слева
     /// </summary>
     public Atom? Left3 => _left3.Value;
 
     /// <summary>
-    /// первый атом справа
+    /// Первый атом справа
     /// </summary>
     public Atom Right1 => _right1.Value;
 
     /// <summary>
-    /// второй атом справа
+    /// Второй атом справа
     /// </summary>
     public Atom? Right2 => _right2.Value;
 
     /// <summary>
-    /// третий атом справа
+    /// Третий атом справа
     /// </summary>
     public Atom? Right3 => _right3.Value;
 
@@ -56,11 +56,11 @@ public class TokenSplit : Split
     private readonly Lazy<Atom?> _right3;
 
     /// <summary>
-    /// конструктор
+    /// Конструктор
     /// </summary>
-    /// <param name="left"> атомы слева </param>
-    /// <param name="delimiter"> разделитель </param>
-    /// <param name="right"> атомы справа </param>
+    /// <param name="left"> Атомы слева </param>
+    /// <param name="delimiter"> Разделитель </param>
+    /// <param name="right"> Атомы справа </param>
     public TokenSplit(List<Atom> left, string delimiter, List<Atom> right)
     {
         LeftAtoms = left;

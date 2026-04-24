@@ -1,22 +1,22 @@
 ﻿namespace Natasha.Razdel;
 
 /// <summary>
-/// результат действия правила
+/// Результат действия правила
 /// </summary>
 public enum RuleAction
 {
     /// <summary>
-    /// действие не определено
+    /// Действие не определено
     /// </summary>
     None = 0,
 
     /// <summary>
-    /// объединение
+    /// Объединение
     /// </summary>
     Join = 1,
 
     /// <summary>
-    /// разделение
+    /// Разделение
     /// </summary>
     Split = 2,
 }

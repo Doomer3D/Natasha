@@ -3,44 +3,34 @@
 namespace Natasha.Razdel.Tokenizer;
 
 /// <summary>
-/// атом
+/// Атом
 /// </summary>
-public class Atom
+/// <param name="start"> Начало </param>
+/// <param name="stop"> Конец </param>
+/// <param name="type"> Тип </param>
+/// <param name="text"> Текст </param>
+public class Atom(int start, int stop, AtomType type, string text)
 {
     /// <summary>
-    /// начало
+    /// Начало
     /// </summary>
-    public int Start { get; set; }
+    public int Start { get; set; } = start;
 
     /// <summary>
-    /// конец
+    /// Конец
     /// </summary>
-    public int Stop { get; set; }
+    public int Stop { get; set; } = stop;
 
     /// <summary>
-    /// тип
+    /// Тип
     /// </summary>
-    public AtomType Type { get; set; }
+    public AtomType Type { get; set; } = type;
 
     /// <summary>
-    /// текст
+    /// Текст
     /// </summary>
-    public string Text { get; set; }
+    public string Text { get; set; } = text;
 
-    /// <summary>
-    /// конструктор
-    /// </summary>
-    /// <param name="start"> начало </param>
-    /// <param name="stop"> конец </param>
-    /// <param name="type"> тип </param>
-    /// <param name="text"> текст </param>
-    public Atom(int start, int stop, AtomType type, string text)
-    {
-        Start = start;
-        Stop = stop;
-        Type = type;
-        Text = text;
-    }
-
+    /// <inheritdoc/>
     public override string ToString() => $"[{Type}] {Text}";
 }

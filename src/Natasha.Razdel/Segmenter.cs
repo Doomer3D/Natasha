@@ -3,39 +3,39 @@
 namespace Natasha.Razdel;
 
 /// <summary>
-/// сегментатор
+/// Сегментатор
 /// </summary>
-/// <typeparam name="T"> тип разделения </typeparam>
+/// <typeparam name="T"> Тип разделения </typeparam>
 public abstract class Segmenter<T>
     where T : Split
 {
     /// <summary>
-    /// разделитель
+    /// Разделитель
     /// </summary>
     public ISplitter<object>? Splitter { get; set; }
 
     /// <summary>
-    /// пост-обработчик
+    /// Пост-обработчик
     /// </summary>
     public Func<string, string>? PostProcessor { get; set; }
 
     /// <summary>
-    /// список правил
+    /// Список правил
     /// </summary>
     public List<Rule<T>> Rules { get; }
 
     /// <summary>
-    /// конструктор
+    /// Конструктор
     /// </summary>
     public Segmenter()
     {
-        Rules = new List<Rule<T>>();
+        Rules = [];
     }
 
     /// <summary>
-    /// разделить текст
+    /// Разделить текст
     /// </summary>
-    /// <param name="text"> текст </param>
+    /// <param name="text"> Текст </param>
     /// <returns></returns>
     public virtual IEnumerable<Substring> Split(string text)
     {
@@ -43,9 +43,9 @@ public abstract class Segmenter<T>
     }
 
     /// <summary>
-    /// разделить текст (только строки)
+    /// Разделить текст (только строки)
     /// </summary>
-    /// <param name="text"> текст </param>
+    /// <param name="text"> Текст </param>
     /// <returns></returns>
     public virtual IEnumerable<string> SplitAsString(string text)
     {
@@ -69,16 +69,16 @@ public abstract class Segmenter<T>
     }
 
     /// <summary>
-    /// сегментировать текст
+    /// Сегментировать текст
     /// </summary>
-    /// <param name="parts"> токены </param>
+    /// <param name="parts"> Токены </param>
     /// <returns></returns>
     protected abstract IEnumerable<string> Segment(IEnumerable<object> parts);
 
     /// <summary>
-    /// проверить, нужно ли объединить разделение
+    /// Проверить, нужно ли объединить разделение
     /// </summary>
-    /// <param name="split"> разделение </param>
+    /// <param name="split"> Разделение </param>
     /// <returns></returns>
     protected virtual bool IsJoin(T split)
     {
@@ -94,10 +94,10 @@ public abstract class Segmenter<T>
     }
 
     /// <summary>
-    /// извлечь подстроки из текста
+    /// Извлечь подстроки из текста
     /// </summary>
-    /// <param name="chunks"> чанки </param>
-    /// <param name="text"> текст </param>
+    /// <param name="chunks"> Чанки </param>
+    /// <param name="text"> Текст </param>
     /// <returns></returns>
     private IEnumerable<Substring> FindSubstrings(IEnumerable<string> chunks, string text)
     {

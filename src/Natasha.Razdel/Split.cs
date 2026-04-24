@@ -3,42 +3,42 @@
 namespace Natasha.Razdel;
 
 /// <summary>
-/// разделение
+/// Разделение
 /// </summary>
 public class Split
 {
     /// <summary>
-    /// левая часть
+    /// Левая часть
     /// </summary>
     public string? Left { get; init; }
 
     /// <summary>
-    /// разделитель
+    /// Разделитель
     /// </summary>
     public string? Delimiter { get; init; }
 
     /// <summary>
-    /// правая часть
+    /// Правая часть
     /// </summary>
     public string? Right { get; init; }
 
     /// <summary>
-    /// буфер
+    /// Буфер
     /// </summary>
     public string? Buffer { get; set; }
 
     /// <summary>
-    /// конструктор
+    /// Конструктор
     /// </summary>
     public Split() { }
 
     /// <summary>
-    /// конструктор
+    /// Конструктор
     /// </summary>
-    /// <param name="left"> левая часть </param>
-    /// <param name="delimiter"> разделитель </param>
-    /// <param name="right"> правая часть </param>
-    /// <param name="buffer"> буфер </param>
+    /// <param name="left"> Левая часть </param>
+    /// <param name="delimiter"> Разделитель </param>
+    /// <param name="right"> Правая часть </param>
+    /// <param name="buffer"> Буфер </param>
     public Split(string left, string delimiter, string right, string? buffer = null)
     {
         Left = left;
@@ -47,6 +47,7 @@ public class Split
         Buffer = buffer;
     }
 
+    /// <inheritdoc/>
     public override string ToString()
     {
         if (string.IsNullOrEmpty(Delimiter))

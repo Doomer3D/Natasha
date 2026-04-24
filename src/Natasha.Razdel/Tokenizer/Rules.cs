@@ -5,10 +5,11 @@ using System.Text.RegularExpressions;
 namespace Natasha.Razdel.Tokenizer;
 
 /// <summary>
-/// правило AB|BA
+/// Правило AB|BA
 /// </summary>
 public abstract class RuleABBA : Rule<TokenSplit>
 {
+    /// <inheritdoc/>
     public override RuleAction Check(TokenSplit split)
     {
         Atom? left, right;
@@ -30,17 +31,17 @@ public abstract class RuleABBA : Rule<TokenSplit>
     }
 
     /// <summary>
-    /// проверить, что токен является разделителем
+    /// Проверить, что токен является разделителем
     /// </summary>
-    /// <param name="delimiter"> токен </param>
+    /// <param name="delimiter"> Токен </param>
     /// <returns></returns>
     public abstract bool IsDelimiter(string delimiter);
 
     /// <summary>
-    /// внутренняя проверка правила
+    /// Внутренняя проверка правила
     /// </summary>
-    /// <param name="left"> атом слева </param>
-    /// <param name="right"> атом справа </param>
+    /// <param name="left"> Атом слева </param>
+    /// <param name="right"> Атом справа </param>
     /// <returns></returns>
     protected abstract RuleAction InnerCheck(Atom left, Atom right);
 }

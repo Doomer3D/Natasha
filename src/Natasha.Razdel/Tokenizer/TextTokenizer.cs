@@ -3,12 +3,12 @@
 namespace Natasha.Razdel.Tokenizer;
 
 /// <summary>
-/// разделитель текста на токены
+/// Разделитель текста на токены
 /// </summary>
 public class TextTokenizer : Segmenter<TokenSplit>
 {
     /// <summary>
-    /// конструктор
+    /// Конструктор
     /// </summary>
     public TextTokenizer()
     {

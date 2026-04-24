@@ -1,33 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>natasha.png</PackageIcon>
-    <Company>Genomancer</Company>
-    <PackageProjectUrl>https://github.com/Doomer3D/Natasha</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Doomer3D/Natasha</RepositoryUrl>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <SignAssembly>False</SignAssembly>
-    <AssemblyVersion>7.0.1</AssemblyVersion>
-    <FileVersion>$(AssemblyVersion)</FileVersion>
-    <Version>$(AssemblyVersion)</Version>
-    <PackageTags>natasha;nlp;russian</PackageTags>
-    <Authors>Doomer3D</Authors>
-    <Title>Razdel — сегментация русскоязычного текста на токены и предложения</Title>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageIcon>natasha.png</PackageIcon>
+        <Company>Genomancer</Company>
+        <PackageProjectUrl>https://github.com/Doomer3D/Natasha</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Doomer3D/Natasha</RepositoryUrl>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <SignAssembly>False</SignAssembly>
+        <AssemblyVersion>10.0.0</AssemblyVersion>
+        <FileVersion>$(AssemblyVersion)</FileVersion>
+        <Version>$(AssemblyVersion)</Version>
+        <PackageTags>natasha;nlp;russian</PackageTags>
+        <Authors>Doomer3D</Authors>
+        <Title>Razdel — сегментация русскоязычного текста на токены и предложения</Title>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\resources\natasha.png" Link="natasha.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\resources\natasha.png" Link="natasha.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\LICENSE">
-        <Pack>True</Pack>
-        <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>

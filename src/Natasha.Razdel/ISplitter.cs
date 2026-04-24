@@ -1,15 +1,15 @@
 ﻿namespace Natasha.Razdel;
 
 /// <summary>
-/// интерфейс разделителя
+/// Интерфейс разделителя
 /// </summary>
-/// <typeparam name="T"> тип элемента </typeparam>
+/// <typeparam name="T"> Тип элемента </typeparam>
 public interface ISplitter<T>
 {
     /// <summary>
-    /// разделить текст
+    /// Разделить текст
     /// </summary>
-    /// <param name="text"> текст </param>
+    /// <param name="text"> Текст </param>
     /// <returns></returns>
     IEnumerable<T> Split(string text);
 }

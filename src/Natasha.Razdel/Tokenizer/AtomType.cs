@@ -3,32 +3,32 @@
 namespace Natasha.Razdel.Tokenizer;
 
 /// <summary>
-/// тип атома
+/// Тип атома
 /// </summary>
 public enum AtomType
 {
     /// <summary>
-    /// прочее
+    /// Прочее
     /// </summary>
     Other = 0,
 
     /// <summary>
-    /// русское слово
+    /// Русское слово
     /// </summary>
     Ru = 1,
 
     /// <summary>
-    /// латинское слово
+    /// Латинское слово
     /// </summary>
     Lat = 2,
 
     /// <summary>
-    /// целое число
+    /// Целое число
     /// </summary>
     Int = 3,
 
     /// <summary>
-    /// пунктуация
+    /// Пунктуация
     /// </summary>
     Punct = 4
 }

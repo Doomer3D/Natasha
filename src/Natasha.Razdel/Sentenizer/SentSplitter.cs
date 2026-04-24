@@ -5,17 +5,18 @@ using System.Text.RegularExpressions;
 namespace Natasha.Razdel.Sentenizer;
 
 /// <summary>
-/// разделитель предложений
+/// Разделитель предложений
 /// </summary>
-public class SentSplitter : Splitter
+/// <param name="window"> Размер окна </param>
+public class SentSplitter(int window = 10) : Splitter(window)
 {
     /// <summary>
-    /// регулярка для разделения строки
+    /// Регулярка для разделения строки
     /// </summary>
     private static readonly Regex _splitterRegex;
 
     /// <summary>
-    /// статический конструктор
+    /// Статический конструктор
     /// </summary>
     static SentSplitter()
     {
@@ -24,12 +25,6 @@ public class SentSplitter : Splitter
         var pattern = $"({smiles}|[{delimiters}])";
         _splitterRegex = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
     }
-
-    /// <summary>
-    /// конструктор
-    /// </summary>
-    /// <param name="window"> размер окна </param>
-    public SentSplitter(int window = 10) : base(window) { }
 
     /// <inheritdoc/>
     public override IEnumerable<object> Split(string text)

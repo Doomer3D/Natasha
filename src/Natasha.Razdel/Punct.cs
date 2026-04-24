@@ -3,62 +3,62 @@
 namespace Natasha.Razdel;
 
 /// <summary>
-/// пунктуация
+/// Пунктуация
 /// </summary>
 public static partial class Punct
 {
     /// <summary>
-    /// знаки окончания предложения
+    /// Знаки окончания предложения
     /// </summary>
     public const string ENDINGS = ".?!…";
 
     /// <summary>
-    /// дефисы
+    /// Дефисы
     /// </summary>
     public const string DASHES = "‑–—−-";
 
     /// <summary>
-    /// открывающие кавычки
+    /// Открывающие кавычки
     /// </summary>
     public const string OPEN_QUOTES = "«“‘";
 
     /// <summary>
-    /// закрывающие кавычки
+    /// Закрывающие кавычки
     /// </summary>
     public const string CLOSE_QUOTES = "»”’";
 
     /// <summary>
-    /// обычные кавычки
+    /// Обычные кавычки
     /// </summary>
     public const string GENERIC_QUOTES = "\"„\'";
 
     /// <summary>
-    /// все кавычки
+    /// Все кавычки
     /// </summary>
     public const string QUOTES = OPEN_QUOTES + CLOSE_QUOTES + GENERIC_QUOTES;
 
     /// <summary>
-    /// открывающие скобки
+    /// Открывающие скобки
     /// </summary>
     public const string OPEN_BRACKETS = "([{";
 
     /// <summary>
-    /// закрывающие скобки
+    /// Закрывающие скобки
     /// </summary>
     public const string CLOSE_BRACKETS = ")]}";
 
     /// <summary>
-    /// все скобки
+    /// Все скобки
     /// </summary>
     public const string BRACKETS = OPEN_BRACKETS + CLOSE_BRACKETS;
 
     /// <summary>
-    /// все границы (кавычки и скобки)
+    /// Все границы (кавычки и скобки)
     /// </summary>
     public const string BOUNDS = QUOTES + BRACKETS;
 
     /// <summary>
-    /// смайлики
+    /// Смайлики
     /// </summary>
     public const string SMILES = "[=:;]-?[)(]{1,3}";
 }

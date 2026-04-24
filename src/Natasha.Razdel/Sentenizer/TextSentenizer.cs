@@ -3,12 +3,12 @@
 namespace Natasha.Razdel.Sentenizer;
 
 /// <summary>
-/// разделитель текста на предложения
+/// Разделитель текста на предложения
 /// </summary>
 public class TextSentenizer : Segmenter<SentSplit>
 {
     /// <summary>
-    /// конструктор
+    /// Конструктор
     /// </summary>
     public TextSentenizer()
     {

@@ -5,11 +5,14 @@ using System.Text.RegularExpressions;
 namespace Natasha.Razdel.Sentenizer;
 
 /// <summary>
-/// правило "хз":
-/// не срабатывает никогда =)
+/// Правило "хз":
 /// </summary>
+/// <remarks>
+/// Не срабатывает никогда =)
+/// </remarks>
 public class EmptySideRule : Rule<SentSplit>
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (split.LeftToken == null || split.RightToken == null)
@@ -20,9 +23,11 @@ public class EmptySideRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "справа от разделителя нет пробела":
-/// "Так в чем же дело? | "
+/// Правило "справа от разделителя нет пробела":
 /// </summary>
+/// <remarks>
+/// "Так в чем же дело? | "
+/// </remarks>
 public class NoSpacePrefixRule : Rule<SentSplit>
 {
     public override RuleAction Check(SentSplit split)
@@ -35,11 +40,14 @@ public class NoSpacePrefixRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "текст справа с маленькой буквы":
-/// Сталин+одобряет
+/// Правило "текст справа с маленькой буквы":
 /// </summary>
+/// <remarks>
+/// Сталин+одобряет
+/// </remarks>
 public class LowerRightRule : Rule<SentSplit>
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (IsLowerWord(split.RightToken))
@@ -49,7 +57,7 @@ public class LowerRightRule : Rule<SentSplit>
     }
 
     /// <summary>
-    /// проверить, что токен является словом в нижнем регистре
+    /// Проверить, что токен является словом в нижнем регистре
     /// </summary>
     /// <param name="token"> токен </param>
     /// <returns></returns>
@@ -61,7 +69,7 @@ public class LowerRightRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "разделитель справа"
+/// Правило "разделитель справа"
 /// </summary>
 public partial class DelimiterRightRule : Rule<SentSplit>
 {
@@ -69,6 +77,7 @@ public partial class DelimiterRightRule : Rule<SentSplit>
 
     private static readonly Regex smile = SmileRegex();
 
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         var right = split.RightToken!;
@@ -86,7 +95,7 @@ public partial class DelimiterRightRule : Rule<SentSplit>
     }
 
     /// <summary>
-    /// регулярка смайликов
+    /// Регулярка смайликов
     /// </summary>
     /// <returns></returns>
     [GeneratedRegex(@"^\s*" + Punct.SMILES, RegexOptions.CultureInvariant)]
@@ -94,11 +103,14 @@ public partial class DelimiterRightRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "сокращение слева":
-/// и т.д. | тов. Сталин
+/// Правило "сокращение слева":
 /// </summary>
+/// <remarks>
+/// И т.д. | тов. Сталин
+/// </remarks>
 public class SokrLeftRule : Rule<SentSplit>
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (split.Delimiter != ".")
@@ -133,9 +145,9 @@ public class SokrLeftRule : Rule<SentSplit>
     }
 
     /// <summary>
-    /// проверить, что токен является сокращением
+    /// Проверить, что токен является сокращением
     /// </summary>
-    /// <param name="token"> токен </param>
+    /// <param name="token"> Токен </param>
     /// <returns></returns>
     private bool IsSokr(string token)
     {
@@ -150,11 +162,14 @@ public class SokrLeftRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "парное сокращение":
-/// МН. Ч.
+/// Правило "парное сокращение":
 /// </summary>
+/// <remarks>
+/// МН. Ч.
+/// </remarks>
 public class InsidePairSokrRule : Rule<SentSplit>
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (split.Delimiter != ".")
@@ -171,11 +186,14 @@ public class InsidePairSokrRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "инициалы слева":
-/// Ф. Э. Дзержинский
+/// Правило "инициалы слева":
 /// </summary>
+/// <remarks>
+/// Ф. Э. Дзержинский
+/// </remarks>
 public class InitialsLeftRule : Rule<SentSplit>
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (split.Delimiter != ".")
@@ -193,18 +211,21 @@ public class InitialsLeftRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "элемент списка":
+/// Правило "элемент списка":
+/// </summary>
+/// <remarks>
 /// 1. нумерованный список
 /// б. маркеры - буквы
 /// III) маркеры - римские числа
-/// </summary>
+/// </remarks>
 public partial class ListItemRule : Rule<SentSplit>
 {
     private const string BULLET_BOUNDS = ".)";
     private const int BULLET_SIZE = 20;
-    private readonly HashSet<char> BULLET_CHARS = new("§абвгдеabcdef");
+    private readonly HashSet<char> BULLET_CHARS = [.. "§абвгдеabcdef"];
     private static readonly Regex ROMAN = RomanRegex();
 
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (!BULLET_BOUNDS.Contains(split.Delimiter!))
@@ -220,9 +241,9 @@ public partial class ListItemRule : Rule<SentSplit>
     }
 
     /// <summary>
-    /// проверить, что токен являтся возможным маркером списка
+    /// Проверить, что токен являтся возможным маркером списка
     /// </summary>
-    /// <param name="token"> токен </param>
+    /// <param name="token"> Токен </param>
     /// <returns></returns>
     private bool IsBullet(string token)
     {
@@ -239,11 +260,14 @@ public partial class ListItemRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// правило "тире справа":
-/// "Россия должна прирастать Сибирью" - Ваши слова, господин Президент.
+/// Правило "тире справа":
 /// </summary>
+/// <remarks>
+/// "Россия должна прирастать Сибирью" - Ваши слова, господин Президент.
+/// </remarks>
 public class DashRightRule : Rule<SentSplit>
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (!Punct.DASHES.Contains(split.RightToken!))
@@ -257,9 +281,9 @@ public class DashRightRule : Rule<SentSplit>
     }
 
     /// <summary>
-    /// проверить, что токен является словом в нижнем регистре
+    /// Проверить, что токен является словом в нижнем регистре
     /// </summary>
-    /// <param name="token"> токен </param>
+    /// <param name="token"> Токен </param>
     /// <returns></returns>
     private bool IsLowerWord(string? token)
     {
@@ -269,25 +293,28 @@ public class DashRightRule : Rule<SentSplit>
 }
 
 /// <summary>
-/// абстрактное правило для окончания внутри границы
+/// Абстрактное правило для окончания внутри границы
 /// </summary>
 public abstract class CloseBoundRule : Rule<SentSplit>
 {
     /// <summary>
-    /// проверить, что окончание предложения находится слева
+    /// Проверить, что окончание предложения находится слева
     /// </summary>
-    /// <param name="split"> разделение </param>
+    /// <param name="split"> Разделение </param>
     /// <returns></returns>
     protected RuleAction CloseBound(SentSplit split) =>
         Punct.ENDINGS.Contains(split.LeftToken!) ? RuleAction.None : RuleAction.Join;
 }
 
 /// <summary>
-/// правило "окончание внутри кавычек":
-/// В рамках проекта «Больше, чем любовь»|+|(среди ...
+/// Правило "окончание внутри кавычек":
 /// </summary>
+/// <remarks>
+/// В рамках проекта «Больше, чем любовь»|+|(среди ...
+/// </remarks>
 public class CloseQuoteRule : CloseBoundRule
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         var delimiter = split.Delimiter!;
@@ -311,11 +338,14 @@ public class CloseQuoteRule : CloseBoundRule
 }
 
 /// <summary>
-/// правило "окончание внутри скобок":
-/// примера не нашел
+/// Правило "окончание внутри скобок":
 /// </summary>
+/// <remarks>
+/// Примера не нашел
+/// <remarks>
 public class CloseBracketRule : CloseBoundRule
 {
+    /// <inheritdoc/>
     public override RuleAction Check(SentSplit split)
     {
         if (Punct.CLOSE_BRACKETS.Contains(split.Delimiter!))

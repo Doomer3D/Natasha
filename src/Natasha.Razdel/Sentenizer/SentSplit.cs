@@ -5,42 +5,42 @@ using System.Text.RegularExpressions;
 namespace Natasha.Razdel.Sentenizer;
 
 /// <summary>
-/// разделение предложений
+/// Разделение предложений
 /// </summary>
 public partial class SentSplit : Split
 {
     /// <summary>
-    /// признак, что элемент слева - пробел
+    /// Признак, что элемент слева - пробел
     /// </summary>
     public bool LeftSpaceSuffix => _leftSpaceSuffix.Value;
 
     /// <summary>
-    /// признак, что элемент справа - пробел
+    /// Признак, что элемент справа - пробел
     /// </summary>
     public bool RightSpacePrefix => _rightSpacePrefix.Value;
 
     /// <summary>
-    /// токен слева
+    /// Токен слева
     /// </summary>
     public string? LeftToken => _leftToken.Value;
 
     /// <summary>
-    /// токен справа
+    /// Токен справа
     /// </summary>
     public string? RightToken => _rightToken.Value;
 
     /// <summary>
-    /// парное сокращение слева
+    /// Парное сокращение слева
     /// </summary>
     public Match LeftPairSokr => _leftPairSokr.Value;
 
     /// <summary>
-    /// токены из буфера
+    /// Токены из буфера
     /// </summary>
     public string[] BufferTokens => _bufferTokens.Value;
 
     /// <summary>
-    /// слово справа
+    /// Слово справа
     /// </summary>
     public string? RightWord => _rightWord.Value;
 
@@ -52,21 +52,12 @@ public partial class SentSplit : Split
     private readonly Lazy<string[]> _bufferTokens;
     private readonly Lazy<string?> _rightWord;
 
-    //@cached_property
-    //def left_int_sokr(self):
-    //    match = INT_SOKR.search(self.left)
-    //    if match:
-    //        return match.group(1)
-
-    //@cached_property
-    //def buffer_first_token(self):
-    //    match = FIRST_TOKEN.match(self.buffer)
-    //    if match:
-    //        return match.group(1)
-
     /// <summary>
-    /// конструктор
+    /// Конструктор
     /// </summary>
+    /// <param name="left"> Левая часть </param>
+    /// <param name="delimiter"> Разделитель </param>
+    /// <param name="right"> Правая часть </param>
     public SentSplit(string left, string delimiter, string right)
     {
         _leftSpaceSuffix = new(() =>
@@ -99,8 +90,8 @@ public partial class SentSplit : Split
         });
         _bufferTokens = new(() =>
         {
-            if (string.IsNullOrWhiteSpace(Buffer)) return Array.Empty<string>();
-            return _token.Matches(Buffer).Select(e => e.Value).ToArray();
+            if (string.IsNullOrWhiteSpace(Buffer)) return [];
+            return [.. _token.Matches(Buffer).Select(e => e.Value)];
         });
         _rightWord = new(() =>
         {
